@@ -1,7 +1,1 @@
 /.env
-/configs
-/go.mod
-/go.sum
-/internal
-/migrations
-/pkg

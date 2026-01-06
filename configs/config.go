@@ -32,6 +32,7 @@ func LoadConfig() *Config {
 		},
 		Auth: AuthConfigs{
 			Secret: os.Getenv("TOKEN"),
+			//test
 		},
 	}
 }

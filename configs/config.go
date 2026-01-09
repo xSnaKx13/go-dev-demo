@@ -20,19 +20,18 @@ type AuthConfigs struct {
 	Secret string
 }
 
-func LoadConfig() *Config {
+func LoadConfig() Config {
 	err := godotenv.Load()
 	if err != nil {
-		log.Println("Error loading .env file, using default config!")
+		log.Fatal("Error loading .env file")
 	}
 
-	return &Config{
+	return Config{
 		Db: DbConfig{
 			Dsn: os.Getenv("DSN"),
 		},
 		Auth: AuthConfigs{
 			Secret: os.Getenv("TOKEN"),
-			//test
 		},
 	}
 }

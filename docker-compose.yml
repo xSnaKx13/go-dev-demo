@@ -1,0 +1,11 @@
+services:
+ postgres:
+  image: postgres:16.4
+  environment:
+   POSTGRES_USER: postgres
+   POSTGRES_PASSWORD: my_pass
+   PGDATA: /data/postgres
+  volumes:
+   - ./data/postgres:/data/postgres
+  ports:
+   - "5432:5432"

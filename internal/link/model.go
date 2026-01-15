@@ -21,6 +21,10 @@ func NewLink(url string) *Link {
 	}
 }
 
+func (link Link) GenerateHash() {
+	RandStringRunes(6)
+}
+
 func RandStringRunes(n int) string {
 	b := make([]rune, n)
 	for i := range b {

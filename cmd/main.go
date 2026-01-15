@@ -4,14 +4,20 @@ import (
 	"fmt"
 	"go-serv/demo/configs"
 	"go-serv/demo/internal/auth"
+	"go-serv/demo/internal/link"
 	"go-serv/demo/pkg/db"
 	"net/http"
 )
 
 func main() {
 	conf := configs.LoadConfig()
-	_ = db.NewDb(&conf)
+	db := db.NewDb(&conf)
 	router := http.NewServeMux()
+
+	newLinkRepository := link.NewLinkRepository(db)
+
+	//handlers
+	link.NewLinkHandler(router, &link.LinkHandlerDeps{LinkRepository: newLinkRepository})
 	auth.NewAuthHandler(router, &auth.AuthHandlerDeps{Config: &conf})
 
 	server := http.Server{

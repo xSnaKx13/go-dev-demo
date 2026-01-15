@@ -33,7 +33,7 @@ func (handler *AuthHandler) RegisterHandler() http.HandlerFunc {
 			return
 		}
 		log.Printf("%+v\n", body)
-		responses.Json(w, 201, "Register successful!")
+		responses.Json(w, "Register successful!", 201)
 	}
 }
 
